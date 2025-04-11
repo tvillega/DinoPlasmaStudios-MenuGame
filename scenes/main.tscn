@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://cftp0460caaal"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sgp6g"]
+size = Vector2(389.5, 70.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5qli"]
+size = Vector2(1117.5, 45.25)
+
+[node name="Main" type="Node2D"]
+
+[node name="Start" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Start"]
+position = Vector2(565.25, 122.75)
+shape = SubResource("RectangleShape2D_sgp6g")
+
+[node name="Button" type="Button" parent="Start"]
+offset_left = 372.0
+offset_top = 94.0
+offset_right = 756.0
+offset_bottom = 153.0
+text = "Start"
+
+[node name="End" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="End"]
+position = Vector2(567.25, 213.75)
+shape = SubResource("RectangleShape2D_sgp6g")
+
+[node name="Button" type="Button" parent="End"]
+offset_left = 375.0
+offset_top = 184.0
+offset_right = 759.0
+offset_bottom = 243.0
+text = "End"
+
+[node name="Floor" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(586.75, 609.375)
+shape = SubResource("RectangleShape2D_o5qli")
