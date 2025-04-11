@@ -50,3 +50,10 @@ shape = SubResource("RectangleShape2D_o5qli")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Settings"]
 position = Vector2(1070.25, 507.375)
 shape = SubResource("RectangleShape2D_0wfyh")
+
+[node name="Label" type="Label" parent="Settings"]
+offset_left = 1042.0
+offset_top = 493.0
+offset_right = 1104.0
+offset_bottom = 516.0
+text = "Settings"
