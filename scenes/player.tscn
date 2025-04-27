@@ -332,11 +332,13 @@ graph_offset = Vector2(85.35, -15.4499)
 script = ExtResource("1_qlg0r")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("1_3vyb7")
 hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -15)
+position = Vector2(0, -38)
+scale = Vector2(2.5, 2.5)
 shape = SubResource("CapsuleShape2D_3vyb7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
