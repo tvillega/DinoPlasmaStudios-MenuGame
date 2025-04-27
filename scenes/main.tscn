@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cftp0460caaal"]
+[gd_scene load_steps=7 format=3 uid="uid://cftp0460caaal"]
 
 [ext_resource type="PackedScene" uid="uid://h5p34vcy7ryy" path="res://scenes/player.tscn" id="1_o5qli"]
+[ext_resource type="Texture2D" uid="uid://2ll1h4mt5443" path="res://sprites/8BitFactoryTilesetPack/Sprites/Platform With Handles.png" id="2_0wfyh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sgp6g"]
 size = Vector2(389.5, 70.5)
@@ -71,3 +72,18 @@ text = "Settings"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(227, 449)
 shape = SubResource("RectangleShape2D_sugp2")
+
+[node name="PlatformWithHandles" type="Sprite2D" parent="."]
+position = Vector2(159, 389)
+scale = Vector2(5, 5)
+texture = ExtResource("2_0wfyh")
+
+[node name="PlatformWithHandles2" type="Sprite2D" parent="."]
+position = Vector2(239, 389)
+scale = Vector2(5, 5)
+texture = ExtResource("2_0wfyh")
+
+[node name="PlatformWithHandles3" type="Sprite2D" parent="."]
+position = Vector2(319, 389)
+scale = Vector2(5, 5)
+texture = ExtResource("2_0wfyh")
