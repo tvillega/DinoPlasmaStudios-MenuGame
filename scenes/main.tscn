@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cftp0460caaal"]
+[gd_scene load_steps=6 format=3 uid="uid://cftp0460caaal"]
+
+[ext_resource type="PackedScene" uid="uid://h5p34vcy7ryy" path="res://scenes/player.tscn" id="1_o5qli"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sgp6g"]
 size = Vector2(389.5, 70.5)
@@ -8,6 +10,9 @@ size = Vector2(1117.5, 45.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0wfyh"]
 size = Vector2(92.5, 88.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sugp2"]
+size = Vector2(216, 150)
 
 [node name="Main" type="Node2D"]
 
@@ -39,6 +44,9 @@ offset_bottom = 231.0
 text = "End"
 metadata/_edit_use_anchors_ = true
 
+[node name="Player" parent="End" instance=ExtResource("1_o5qli")]
+position = Vector2(236, 340)
+
 [node name="Floor" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
@@ -57,3 +65,9 @@ offset_top = 493.0
 offset_right = 1104.0
 offset_bottom = 516.0
 text = "Settings"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(227, 449)
+shape = SubResource("RectangleShape2D_sugp2")
