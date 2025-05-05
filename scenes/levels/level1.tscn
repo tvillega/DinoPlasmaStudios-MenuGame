@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bb0dsw3yugpm"]
+
+[ext_resource type="Texture2D" uid="uid://bmwsa7oxneee2" path="res://sprites/8BitFactoryTilesetPack/Sprites/Stone Brick.png" id="1_x6ivy"]
+[ext_resource type="PackedScene" uid="uid://h5p34vcy7ryy" path="res://scenes/goose.tscn" id="2_4tcl0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4tcl0"]
+size = Vector2(1151, 81.5)
+
+[node name="Level1" type="Node2D"]
+
+[node name="Players" type="Node2D" parent="."]
+
+[node name="Goose" parent="Players" instance=ExtResource("2_4tcl0")]
+position = Vector2(142, 108)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(576.5, 606.25)
+shape = SubResource("RectangleShape2D_4tcl0")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(576.5, 606)
+scale = Vector2(143.625, 9.75)
+texture = ExtResource("1_x6ivy")
