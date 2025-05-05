@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="DinoPlasma-MenuGame"
-run/main_scene="uid://cruk3pcufldmd"
+run/main_scene="uid://cftp0460caaal"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Debug="*res://autoloads/debug.gd"
 
 [input]
 
@@ -32,6 +36,13 @@ Mov_right={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":68,"key_label":0,"unicode":68,"location":0,"echo":false,"script":null)
 ]
 }
+
+[layer_names]
+
+2d_render/layer_1="World"
+2d_render/layer_2="Player"
+2d_render/layer_3="Enemy"
+2d_render/layer_4="UI"
 
 [rendering]
 
