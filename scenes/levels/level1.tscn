@@ -1,12 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://bb0dsw3yugpm"]
+[gd_scene load_steps=6 format=3 uid="uid://bb0dsw3yugpm"]
 
+[ext_resource type="Script" uid="uid://6cma6cd7tx46" path="res://scenes/levels/level_1.gd" id="1_dd0lh"]
 [ext_resource type="Texture2D" uid="uid://bmwsa7oxneee2" path="res://sprites/8BitFactoryTilesetPack/Sprites/Stone Brick.png" id="1_x6ivy"]
 [ext_resource type="PackedScene" uid="uid://h5p34vcy7ryy" path="res://scenes/goose.tscn" id="2_4tcl0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4tcl0"]
 size = Vector2(1151, 81.5)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_4tcl0"]
+radius = 68.3593
+
 [node name="Level1" type="Node2D"]
+script = ExtResource("1_dd0lh")
 
 [node name="Players" type="Node2D" parent="."]
 
@@ -23,3 +28,19 @@ shape = SubResource("RectangleShape2D_4tcl0")
 position = Vector2(576.5, 606)
 scale = Vector2(143.625, 9.75)
 texture = ExtResource("1_x6ivy")
+
+[node name="UnlockFLying" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UnlockFLying"]
+position = Vector2(1074, 490)
+shape = SubResource("CircleShape2D_4tcl0")
+
+[node name="Button" type="Button" parent="UnlockFLying"]
+offset_left = 1024.0
+offset_top = 449.0
+offset_right = 1123.0
+offset_bottom = 531.0
+text = "Unlock
+Jumping"
+
+[connection signal="body_entered" from="UnlockFLying" to="." method="_on_unlock_flying_body_entered"]

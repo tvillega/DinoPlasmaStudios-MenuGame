@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cftp0460caaal"]
+[gd_scene load_steps=9 format=3 uid="uid://cftp0460caaal"]
 
 [ext_resource type="Script" uid="uid://d1jv6ltvba3vh" path="res://scenes/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://h5p34vcy7ryy" path="res://scenes/goose.tscn" id="1_o5qli"]
@@ -8,9 +8,6 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jyhfs"]
 size = Vector2(291, 61)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbgi4"]
-size = Vector2(184, 96)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sugp2"]
 size = Vector2(216, 16)
@@ -66,21 +63,6 @@ offset_top = 178.0
 offset_right = 722.0
 offset_bottom = 238.0
 text = "Settings"
-
-[node name="UnlockFLying" type="StaticBody2D" parent="FakeUI"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FakeUI/UnlockFLying"]
-position = Vector2(1036, 577)
-shape = SubResource("RectangleShape2D_tbgi4")
-disabled = true
-
-[node name="Button" type="Button" parent="FakeUI/UnlockFLying"]
-offset_left = 945.0
-offset_top = 529.0
-offset_right = 1128.0
-offset_bottom = 625.0
-text = "Unlock Flying
-(Only $99.99)"
 
 [node name="Platform" type="StaticBody2D" parent="."]
 

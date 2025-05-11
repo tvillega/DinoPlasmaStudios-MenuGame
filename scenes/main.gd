@@ -3,13 +3,6 @@ extends Node2D
 
 @onready var bottom: Area2D = $Bottom
 
-
-
-
-
-
-
-
 func _on_bottom_body_entered(body: Node2D) -> void:
 	#pass # Replace with function body.
 	Debug.log("Level 1: Flying")
