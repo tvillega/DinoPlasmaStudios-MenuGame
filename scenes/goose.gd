@@ -1,11 +1,11 @@
 class_name Goose
 extends CharacterBody2D
 
-@export var speed = 200
-@export var og_jump = 300
+@export var speed = 300
+@export var og_jump = 300 # Beacuse jump could be 0
 @export var jump = 300
 @export var gravity = 600
-@export var aceleration = 500
+@export var aceleration = 1500
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var label: Label = $Label
@@ -40,7 +40,7 @@ func _physics_process(delta: float) -> void:
 	
 	if is_on_floor():
 		if abs(velocity.x) > 10 and velocity.y == 0:
-			if velocity.x > jump*1.5:
+			if abs(velocity.x) > og_jump*1.5:
 				label.text = "INCOMING!!"
 			else:
 				label.text = ""
