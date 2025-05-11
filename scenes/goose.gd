@@ -1,0 +1,51 @@
+class_name Goose
+extends CharacterBody2D
+
+@export var speed = 200
+@export var jump = 300
+@export var gravity = 600
+@export var aceleration = 500
+
+@onready var sprite: Sprite2D = $Sprite2D
+@onready var label: Label = $Label
+
+@onready var animation_tree: AnimationTree = $AnimationTree
+@onready var playback = animation_tree["parameters/playback"]
+
+func _physics_process(delta: float) -> void:
+
+	if not is_on_floor():
+		velocity.y += gravity*delta
+	
+	elif is_on_floor() and Input.is_action_just_pressed("Jump"):
+		velocity.y = -jump
+
+	var move_input = Input.get_axis("Mov_left","Mov_right")
+
+	if move_input < 0:
+		sprite.flip_h = true
+	elif move_input > 0:
+		sprite.flip_h = false
+	
+	velocity.x = move_toward(velocity.x, speed*move_input, aceleration*delta)
+	
+	if is_on_floor():
+		if abs(velocity.x) > 10 and velocity.y == 0:
+			if velocity.x > jump*1.5:
+				label.text = "INCOMING!!"
+			else:
+				label.text = ""
+			playback.travel("walk")  # Caminando
+		elif velocity.y == 0:
+			label.text = ""
+			playback.travel("idle")  # Quieto
+	else:
+		if velocity.y < 0:
+			playback.travel("flap")  # Subiendo (salto)
+		elif velocity.y == 0:
+			label.text = ""
+		else:
+			if velocity.y > jump+50:
+				label.text = "I CAN'T FLY"
+			playback.travel("fall")  # Cayendo (o usa "fall" si tienes animación)
+	move_and_slide()
