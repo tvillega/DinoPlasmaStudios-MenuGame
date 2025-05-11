@@ -2,6 +2,7 @@ class_name Goose
 extends CharacterBody2D
 
 @export var speed = 200
+@export var og_jump = 300
 @export var jump = 300
 @export var gravity = 600
 @export var aceleration = 500
@@ -13,11 +14,19 @@ extends CharacterBody2D
 @onready var playback = animation_tree["parameters/playback"]
 
 func _physics_process(delta: float) -> void:
+	
+	if not PlayerStats.flying:
+		jump = 0
+	else:
+		jump = og_jump
+		
 
 	if not is_on_floor():
 		velocity.y += gravity*delta
 	
 	elif is_on_floor() and Input.is_action_just_pressed("Jump"):
+		if not PlayerStats.flying:
+			Debug.log("I can't jump. There must be a way to unlock it.")
 		velocity.y = -jump
 
 	var move_input = Input.get_axis("Mov_left","Mov_right")
