@@ -1,10 +1,11 @@
-[gd_scene load_steps=33 format=3 uid="uid://h5p34vcy7ryy"]
+[gd_scene load_steps=34 format=3 uid="uid://h5p34vcy7ryy"]
 
 [ext_resource type="Texture2D" uid="uid://c7w1umuoe5cla" path="res://sprites/Goose/Idle.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://cmsostlsb6ca" path="res://scenes/goose.gd" id="1_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://dfm3kiv2shhle" path="res://sprites/Goose/Run.png" id="2_g2els"]
 [ext_resource type="Texture2D" uid="uid://dhcbsxjtumxy5" path="res://sprites/Goose/Walk.png" id="4_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://ddhjkcq5klv18" path="res://sprites/Goose/Flap.png" id="5_fjrip"]
+[ext_resource type="Texture2D" uid="uid://cl7hc1gtx4nx1" path="res://sprites/meme-glasses.png" id="6_oe8yf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vyb7"]
 radius = 8.0
@@ -361,3 +362,8 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_4r5pv")
 anim_player = NodePath("../AnimationPlayer")
+
+[node name="Meme-glasses" type="Sprite2D" parent="."]
+position = Vector2(17, -57)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("6_oe8yf")

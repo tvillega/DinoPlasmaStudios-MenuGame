@@ -7,5 +7,5 @@ extends Node2D
 func _on_unlock_flying_body_entered(body: Node2D) -> void:
 	#pass # Replace with function body.
 	Debug.log("Unlocked Jump")
-	PlayerStats.flying = true
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
+	PlayerStats.can_fly = true
+	get_tree().change_scene_to_file("res://scenes/lobby.tscn")

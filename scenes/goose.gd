@@ -15,17 +15,18 @@ extends CharacterBody2D
 
 func _physics_process(delta: float) -> void:
 	
-	if not PlayerStats.flying:
+	# Gatekeep jumping by setting it to zero
+	if not PlayerStats.can_jump:
 		jump = 0
 	else:
 		jump = og_jump
 		
-
+	
 	if not is_on_floor():
 		velocity.y += gravity*delta
 	
 	elif is_on_floor() and Input.is_action_just_pressed("Jump"):
-		if not PlayerStats.flying:
+		if not PlayerStats.can_jump:
 			Debug.log("I can't jump. There must be a way to unlock it.")
 		velocity.y = -jump
 
