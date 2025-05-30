@@ -4,8 +4,15 @@ extends Node2D
 @onready var unlock_flying: Area2D = $UnlockFlying
 @onready var goose: CharacterBody2D = $Players/Goose
 
+func _ready() -> void:
+
+	if LobbyStats.beaten_lvl_1:
+		Debug.log("Already beaten")
+	
+
 func _on_unlock_flying_body_entered(body: Node2D) -> void:
 	#pass # Replace with function body.
 	Debug.log("Unlocked Jump")
-	PlayerStats.can_fly = true
+	PlayerStats.can_jump = true
+	LobbyStats.beaten_lvl_1 = true
 	get_tree().change_scene_to_file("res://scenes/lobby.tscn")

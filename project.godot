@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Debug="*res://autoloads/debug.gd"
 PlayerStats="*res://autoloads/player_stats.gd"
+LobbyStats="*res://autoloads/lobby_stats.gd"
 
 [input]
 
