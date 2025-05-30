@@ -1,4 +1,4 @@
-class_name MainScreen
+class_name Lobby
 extends Node2D
 
 @onready var bottom: Area2D = $Bottom

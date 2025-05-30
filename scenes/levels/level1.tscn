@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bb0dsw3yugpm"]
 
-[ext_resource type="Script" uid="uid://6cma6cd7tx46" path="res://scenes/levels/level_1.gd" id="1_dd0lh"]
+[ext_resource type="Script" path="res://scenes/levels/level_1.gd" id="1_dd0lh"]
 [ext_resource type="Texture2D" uid="uid://bmwsa7oxneee2" path="res://sprites/8BitFactoryTilesetPack/Sprites/Stone Brick.png" id="1_x6ivy"]
 [ext_resource type="PackedScene" uid="uid://h5p34vcy7ryy" path="res://scenes/goose.tscn" id="2_4tcl0"]
 
