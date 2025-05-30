@@ -1,10 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cftp0460caaal"]
+[gd_scene load_steps=8 format=4 uid="uid://cftp0460caaal"]
 
 [ext_resource type="Script" uid="uid://d1jv6ltvba3vh" path="res://scenes/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://h5p34vcy7ryy" path="res://scenes/goose.tscn" id="1_o5qli"]
-[ext_resource type="Texture2D" uid="uid://2ll1h4mt5443" path="res://sprites/8BitFactoryTilesetPack/Sprites/Platform With Handles.png" id="2_0wfyh"]
-[ext_resource type="Texture2D" uid="uid://4ugobqbuuvcr" path="res://sprites/8BitFactoryTilesetPack/Sprites/Chain Hold.png" id="3_sugp2"]
-[ext_resource type="Texture2D" uid="uid://mqkmvujssppn" path="res://sprites/8BitFactoryTilesetPack/Sprites/Factory Tile.png" id="5_tbgi4"]
+[ext_resource type="TileSet" uid="uid://g0a0fcgdtd6i" path="res://sprites/8BitFactoryTilesetPack/Tileset/tileset.tres" id="3_sugp2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jyhfs"]
 size = Vector2(291, 61)
@@ -84,79 +82,19 @@ text = "Unlock Flying
 
 [node name="Platform" type="StaticBody2D" parent="."]
 
-[node name="PlatformWithHandles" type="Sprite2D" parent="Platform"]
-position = Vector2(155, 298)
-scale = Vector2(5, 5)
-texture = ExtResource("2_0wfyh")
-
-[node name="PlatformWithHandles2" type="Sprite2D" parent="Platform"]
-position = Vector2(235, 298)
-scale = Vector2(5, 5)
-texture = ExtResource("2_0wfyh")
-
-[node name="PlatformWithHandles3" type="Sprite2D" parent="Platform"]
-position = Vector2(303, 298)
-scale = Vector2(3.5, 5)
-texture = ExtResource("2_0wfyh")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
-position = Vector2(223, 331)
+position = Vector2(202, 299)
 shape = SubResource("RectangleShape2D_sugp2")
-
-[node name="LeftChain" type="Node2D" parent="Platform"]
-
-[node name="ChainHold" type="Sprite2D" parent="Platform/LeftChain"]
-position = Vector2(161, 233)
-scale = Vector2(5, 5)
-texture = ExtResource("3_sugp2")
-
-[node name="ChainHold2" type="Sprite2D" parent="Platform/LeftChain"]
-position = Vector2(161, 163)
-scale = Vector2(5, 5)
-texture = ExtResource("3_sugp2")
-
-[node name="ChainHold3" type="Sprite2D" parent="Platform/LeftChain"]
-position = Vector2(161, 93)
-scale = Vector2(5, 5)
-texture = ExtResource("3_sugp2")
-
-[node name="ChainHold4" type="Sprite2D" parent="Platform/LeftChain"]
-position = Vector2(161, 23)
-scale = Vector2(5, 5)
-texture = ExtResource("3_sugp2")
-
-[node name="RightChain" type="Node2D" parent="Platform"]
-position = Vector2(150, 0)
-
-[node name="ChainHold" type="Sprite2D" parent="Platform/RightChain"]
-position = Vector2(161, 233)
-scale = Vector2(5, 5)
-texture = ExtResource("3_sugp2")
-
-[node name="ChainHold2" type="Sprite2D" parent="Platform/RightChain"]
-position = Vector2(161, 163)
-scale = Vector2(5, 5)
-texture = ExtResource("3_sugp2")
-
-[node name="ChainHold3" type="Sprite2D" parent="Platform/RightChain"]
-position = Vector2(161, 93)
-scale = Vector2(5, 5)
-texture = ExtResource("3_sugp2")
-
-[node name="ChainHold4" type="Sprite2D" parent="Platform/RightChain"]
-position = Vector2(161, 23)
-scale = Vector2(5, 5)
-texture = ExtResource("3_sugp2")
 
 [node name="Bottom" type="Area2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="Bottom"]
-position = Vector2(576, 608)
-scale = Vector2(140.625, 6.375)
-texture = ExtResource("5_tbgi4")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom"]
-position = Vector2(569, 601)
+position = Vector2(565, 587)
 shape = SubResource("RectangleShape2D_tefeu")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+scale = Vector2(4, 4)
+tile_map_data = PackedByteArray("AAAAABEAAQAGAAAAAAAAABIAAQAGAAEAAAABABEAAQAHAAAAAAABABIAAQAHAAEAAAACABEAAQAGAAAAAAACABIAAQAGAAEAAAADABEAAQAHAAAAAAADABIAAQAHAAEAAAAEABEAAQAGAAAAAAAEABIAAQAGAAEAAAAFABEAAQAHAAAAAAAFABIAAQAHAAEAAAAGABEAAQAGAAAAAAAGABIAAQAGAAEAAAAHABEAAQAHAAAAAAAHABIAAQAHAAEAAAAIABEAAQAGAAAAAAAIABIAAQAGAAEAAAAJABEAAQAHAAAAAAAJABIAAQAHAAEAAAAKABEAAQAGAAAAAAAKABIAAQAGAAEAAAALABEAAQAHAAAAAAALABIAAQAHAAEAAAAMABEAAQAGAAAAAAAMABIAAQAGAAEAAAANABEAAQAHAAAAAAANABIAAQAHAAEAAAAOABEAAQAGAAAAAAAOABIAAQAGAAEAAAAPABEAAQAHAAAAAAAPABIAAQAHAAEAAAASABIAAQAGAAEAAAATABEAAQAHAAAAAAATABIAAQAHAAEAAAAUABEAAQAGAAAAAAAUABIAAQAGAAEAAAAVABEAAQAHAAAAAAAVABIAAQAHAAEAAAAWABEAAQAGAAAAAAAWABIAAQAGAAEAAAAXABEAAQAHAAAAAAAXABIAAQAHAAEAAAAYABEAAQAGAAAAAAAYABIAAQAGAAEAAAAZABEAAQAHAAAAAAAZABIAAQAHAAEAAAAaABEAAQAGAAAAAAAaABIAAQAGAAEAAAAbABEAAQAHAAAAAAAbABIAAQAHAAEAAAARABEAAQAHAAAAAAARABIAAQAHAAEAAAAQABEAAQAGAAAAAAAQABIAAQAGAAEAAAAcABEAAQAGAAAAAAAcABIAAQAGAAEAAAAdABEAAQAHAAAAAAAdABIAAQAHAAEAAAASABEAAQAGAAAAAAADAAgAAQAEAAAAAAADAAkAAQAEAAEAAAAEAAgAAQAFAAAAAAAEAAkAAQAFAAEAAAAFAAgAAQAEAAAAAAAFAAkAAQAEAAEAAAAGAAgAAQAFAAAAAAAHAAgAAQAEAAAAAAAHAAkAAQAEAAEAAAAIAAgAAQAFAAAAAAAIAAkAAQAFAAEAAAAJAAgAAQAEAAAAAAAJAAkAAQAEAAEAAAAKAAgAAQAFAAAAAAAKAAkAAQAFAAEAAAAGAAkAAQAFAAEAAAD+/wEAAQACAAAAAAD+/wIAAQACAAAAAAD+/wMAAQACAAAAAAD//wMAAQACAAAAAAAAAAMAAQACAAAAAAAAAAIAAQACAAAAAAD//wIAAQACAAAAAAD//wEAAQACAAAAAAAAAAEAAQACAAAAAAD9/wMAAQACAAAAAAD9/wIAAQACAAAAAAD9/wEAAQACAAAAAAD8/wEAAQACAAAAAAD8/wIAAQACAAAAAAD8/wMAAQACAAAAAAADAAYAAQAEAAIAAAADAAcAAQAEAAMAAAADAAQAAQAEAAIAAAADAAUAAQAEAAMAAAADAAIAAQAEAAIAAAADAAMAAQAEAAMAAAAJAAYAAQAEAAIAAAAJAAcAAQAEAAMAAAAJAAQAAQAEAAIAAAAJAAUAAQAEAAMAAAAJAAIAAQAEAAIAAAAJAAMAAQAEAAMAAAADAAAAAQAEAAIAAAADAAEAAQAEAAMAAAAJAAAAAQAEAAIAAAAJAAEAAQAEAAMAAAADAP7/AQAEAAIAAAADAP//AQAEAAMAAAAJAP7/AQAEAAIAAAAJAP//AQAEAAMAAAA=")
+tile_set = ExtResource("3_sugp2")
 
 [connection signal="body_entered" from="Bottom" to="." method="_on_bottom_body_entered"]
