@@ -12,6 +12,11 @@ extends CharacterBody2D
 
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var playback = animation_tree["parameters/playback"]
+@onready var glasses = $"Meme-glasses"
+
+func _ready() -> void:
+	if not PlayerStats.can_fly:
+		glasses.visible = false
 
 func _physics_process(delta: float) -> void:
 	
@@ -21,7 +26,6 @@ func _physics_process(delta: float) -> void:
 	else:
 		jump = og_jump
 		
-	
 	if not is_on_floor():
 		velocity.y += gravity*delta
 	
