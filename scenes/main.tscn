@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cftp0460caaal"]
+[gd_scene load_steps=10 format=3 uid="uid://cftp0460caaal"]
 
 [ext_resource type="Script" uid="uid://d1jv6ltvba3vh" path="res://scenes/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://h5p34vcy7ryy" path="res://scenes/goose.tscn" id="1_o5qli"]
@@ -8,6 +8,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jyhfs"]
 size = Vector2(291, 61)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbgi4"]
+size = Vector2(289.5, 57.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sugp2"]
 size = Vector2(216, 16)
@@ -40,15 +43,19 @@ offset_right = 722.0
 offset_bottom = 238.0
 text = "Start Game"
 
-[node name="Credits" type="Node2D" parent="FakeUI"]
+[node name="Credits" type="StaticBody2D" parent="FakeUI"]
 position = Vector2(0, 100)
 
-[node name="Button" type="Button" parent="FakeUI/Credits"]
-offset_left = 431.0
-offset_top = 178.0
-offset_right = 722.0
-offset_bottom = 238.0
+[node name="miniboss" type="Button" parent="FakeUI/Credits"]
+offset_left = 433.0
+offset_top = 180.0
+offset_right = 724.0
+offset_bottom = 240.0
 text = "Credits"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FakeUI/Credits"]
+position = Vector2(579, 210)
+shape = SubResource("RectangleShape2D_tbgi4")
 
 [node name="Settings" type="StaticBody2D" parent="FakeUI"]
 position = Vector2(0, 200)

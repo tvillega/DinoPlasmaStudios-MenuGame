@@ -1,10 +1,11 @@
-[gd_scene load_steps=33 format=3 uid="uid://h5p34vcy7ryy"]
+[gd_scene load_steps=35 format=3 uid="uid://h5p34vcy7ryy"]
 
 [ext_resource type="Texture2D" uid="uid://c7w1umuoe5cla" path="res://sprites/Goose/Idle.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://cmsostlsb6ca" path="res://scenes/goose.gd" id="1_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://dfm3kiv2shhle" path="res://sprites/Goose/Run.png" id="2_g2els"]
 [ext_resource type="Texture2D" uid="uid://dhcbsxjtumxy5" path="res://sprites/Goose/Walk.png" id="4_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://ddhjkcq5klv18" path="res://sprites/Goose/Flap.png" id="5_fjrip"]
+[ext_resource type="Script" uid="uid://cimjfucgu5mql" path="res://scenes/hurtbox.gd" id="6_oe8yf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vyb7"]
 radius = 8.0
@@ -328,6 +329,10 @@ states/walk/position = Vector2(583.031, 29.5)
 transitions = ["idle", "walk", SubResource("AnimationNodeStateMachineTransition_ur7pv"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_y4r1p"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_d2wvv"), "walk", "run", SubResource("AnimationNodeStateMachineTransition_3v2ag"), "run", "walk", SubResource("AnimationNodeStateMachineTransition_jej6c"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_f1ej7"), "idle", "flap", SubResource("AnimationNodeStateMachineTransition_oprun"), "walk", "flap", SubResource("AnimationNodeStateMachineTransition_a8ls1"), "run", "flap", SubResource("AnimationNodeStateMachineTransition_qfm1y"), "flap", "idle", SubResource("AnimationNodeStateMachineTransition_fulsm"), "flap", "fall", SubResource("AnimationNodeStateMachineTransition_4r5pv"), "fall", "idle", SubResource("AnimationNodeStateMachineTransition_60mlk"), "fall", "walk", SubResource("AnimationNodeStateMachineTransition_i4ail")]
 graph_offset = Vector2(85.35, -15.4499)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ruu4t"]
+radius = 20.0
+height = 74.0
+
 [node name="Goose" type="CharacterBody2D"]
 light_mask = 3
 visibility_layer = 3
@@ -346,10 +351,10 @@ scale = Vector2(2.5, 2.5)
 texture = ExtResource("1_3vyb7")
 hframes = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["damage"]]
 light_mask = 3
 visibility_layer = 3
-position = Vector2(0, -38)
+position = Vector2(6, -38)
 scale = Vector2(2.5, 2.5)
 shape = SubResource("CapsuleShape2D_3vyb7")
 
@@ -361,3 +366,11 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_4r5pv")
 anim_player = NodePath("../AnimationPlayer")
+
+[node name="Hurtbox" type="Area2D" parent="." groups=["damage"]]
+script = ExtResource("6_oe8yf")
+metadata/_custom_type_script = "uid://cimjfucgu5mql"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(6, -39)
+shape = SubResource("CapsuleShape2D_ruu4t")

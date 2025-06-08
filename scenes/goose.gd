@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 @export var speed = 300
 @export var og_jump = 300 # Beacuse jump could be 0
-@export var jump = 300
+@export var jump = 400
 @export var gravity = 600
 @export var aceleration = 1500
 
@@ -58,3 +58,5 @@ func _physics_process(delta: float) -> void:
 				label.text = "I CAN'T FLY"
 			playback.travel("fall")  # Cayendo (o usa "fall" si tienes animación)
 	move_and_slide()
+func receive_hit():
+	queue_free()  # Esto elimina al ganso

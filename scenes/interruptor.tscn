@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://d12fjqw18w6ab"]
+
+[ext_resource type="Script" uid="uid://c1ufgg87b2qwt" path="res://area_2d.gd" id="1_qh405"]
+[ext_resource type="Texture2D" uid="uid://cklkk2pas1fj" path="res://sprites/Final/Salt.png" id="2_q80mo"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lqn5k"]
+radius = 13.0
+height = 74.0
+
+[node name="Interruptor" type="Area2D"]
+script = ExtResource("1_qh405")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -4.76837e-07)
+scale = Vector2(0.379464, 0.372768)
+texture = ExtResource("2_q80mo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 5)
+shape = SubResource("CapsuleShape2D_lqn5k")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
