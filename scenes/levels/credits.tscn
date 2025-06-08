@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://c1oghuau8yp8q"]
+[gd_scene load_steps=28 format=4 uid="uid://c1oghuau8yp8q"]
 
 [ext_resource type="Script" uid="uid://cx2xxicljkrp0" path="res://scenes/levels/credits.gd" id="1_3hkv2"]
 [ext_resource type="Texture2D" uid="uid://jbw1rsorup7t" path="res://sprites/Final/Tiles.png" id="1_kljwr"]
@@ -8661,6 +8661,9 @@ sources/7 = SubResource("TileSetAtlasSource_is8mj")
 sources/8 = SubResource("TileSetAtlasSource_jt0ba")
 sources/9 = SubResource("TileSetAtlasSource_wvvnq")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3hkv2"]
+size = Vector2(20, 726)
+
 [node name="creditos" type="Node2D"]
 script = ExtResource("1_3hkv2")
 
@@ -8708,3 +8711,15 @@ position = Vector2(919, 543)
 
 [node name="miniboss" parent="." instance=ExtResource("11_66pw8")]
 position = Vector2(381, 139)
+
+[node name="InvWallLeft" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InvWallLeft"]
+position = Vector2(-25, 362)
+shape = SubResource("RectangleShape2D_3hkv2")
+
+[node name="InvWallRight" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InvWallRight"]
+position = Vector2(1156, 362)
+shape = SubResource("RectangleShape2D_3hkv2")

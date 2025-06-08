@@ -14,11 +14,17 @@ extends CharacterBody2D
 @onready var playback = animation_tree["parameters/playback"]
 @onready var glasses = $"Meme-glasses"
 
+@onready var dead = false
+
 func _ready() -> void:
 	if not PlayerStats.can_fly:
 		glasses.visible = false
 
 func _physics_process(delta: float) -> void:
+	
+	if dead:
+		label.text = "OH NO"
+		return
 	
 	# Gatekeep jumping by setting it to zero
 	if not PlayerStats.can_jump:
@@ -64,4 +70,9 @@ func _physics_process(delta: float) -> void:
 			playback.travel("fall")  # Cayendo (o usa "fall" si tienes animación)
 	move_and_slide()
 func receive_hit():
+	dead = true
+	Debug.log("You've been slayed, returning to Lobby.")
+	await get_tree().create_timer(2).timeout
+	get_tree().change_scene_to_file("res://scenes/lobby.tscn")
 	queue_free()  # Esto elimina al ganso
+	

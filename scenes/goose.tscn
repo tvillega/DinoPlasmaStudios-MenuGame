@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://dfm3kiv2shhle" path="res://sprites/Goose/Run.png" id="2_g2els"]
 [ext_resource type="Texture2D" uid="uid://dhcbsxjtumxy5" path="res://sprites/Goose/Walk.png" id="4_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://ddhjkcq5klv18" path="res://sprites/Goose/Flap.png" id="5_fjrip"]
-[ext_resource type="Texture2D" uid="uid://cl7hc1gtx4nx1" path="res://sprites/meme-glasses.png" id="6_oe8yf"]
 [ext_resource type="Script" uid="uid://cimjfucgu5mql" path="res://scenes/hurtbox.gd" id="6_oe8yf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vyb7"]
@@ -371,7 +370,6 @@ anim_player = NodePath("../AnimationPlayer")
 [node name="Meme-glasses" type="Sprite2D" parent="."]
 position = Vector2(17, -57)
 scale = Vector2(0.05, 0.05)
-texture = ExtResource("6_oe8yf")
 
 [node name="Hurtbox" type="Area2D" parent="." groups=["damage"]]
 script = ExtResource("6_oe8yf")

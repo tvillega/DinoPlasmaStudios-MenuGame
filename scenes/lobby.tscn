@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://cftp0460caaal"]
+[gd_scene load_steps=13 format=4 uid="uid://cftp0460caaal"]
 
 [ext_resource type="Script" uid="uid://d1jv6ltvba3vh" path="res://scenes/lobby.gd" id="1_pc087"]
 [ext_resource type="PackedScene" uid="uid://h5p34vcy7ryy" path="res://scenes/goose.tscn" id="2_apkv3"]
@@ -198,6 +198,9 @@ size = Vector2(44, 579)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q60fs"]
 size = Vector2(23.5, 578)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_omrgh"]
+size = Vector2(286, 26)
+
 [node name="Lobby" type="Node2D"]
 script = ExtResource("1_pc087")
 
@@ -239,6 +242,8 @@ text = "Credits"
 position = Vector2(0, 200)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FakeUI/Settings"]
+light_mask = 3
+visibility_layer = 3
 position = Vector2(576, 208)
 shape = SubResource("RectangleShape2D_jyhfs")
 
@@ -262,7 +267,7 @@ scale = Vector2(5, 5)
 tile_map_data = PackedByteArray("AAAHAAYAAAAEAAAAAAAIAAcAAAAFAAEAAAAHAAcAAAAEAAEAAAAIAAYAAAAFAAAAAAADAAQAAAAEAAIAAAADAAMAAAAEAAIAAAADAAIAAAAEAAIAAAADAAEAAAAEAAIAAAADAAAAAAAEAAIAAAAEAAQAAAAEAAIAADAEAAMAAAAEAAIAADAEAAIAAAAEAAIAADAEAAAAAAAEAAIAADAEAAEAAAAEAAIAADADAP//AAAEAAIAAAAEAP//AAAEAAIAADAIAAQAAAAEAAIAADAIAAMAAAAEAAIAADAIAAIAAAAEAAIAADAIAAEAAAAEAAIAADAIAAAAAAAEAAIAADAIAP//AAAEAAIAADAHAAQAAAAEAAIAAAAHAAMAAAAEAAIAAAAHAAIAAAAEAAIAAAAHAAEAAAAEAAIAAAAHAP//AAAEAAIAAAAHAAAAAAAEAAIAAAAHAAUAAAAEAAMAAAAIAAUAAAAEAAMAABAAAA8AAAADAAAAAAABAA8AAAADAAAAAAACAA8AAAADAAAAAAADAA8AAAADAAAAAAAEAA8AAAADAAAAAAAFAA8AAAADAAAAAAAGAA8AAAADAAAAAAAHAA8AAAADAAAAAAAIAA8AAAADAAAAAAAJAA8AAAADAAAAAAAKAA8AAAADAAAAAAALAA8AAAADAAAAAAAMAA8AAAADAAAAAAANAA8AAAADAAAAAAAOAA8AAAADAAAAAAAPAA8AAAADAAAAAAATAA8AAAADAAAAAAAUAA8AAAADAAAAAAAVAA8AAAADAAAAAAAWAA8AAAADAAAAAAAXAA8AAAADAAAAAAAYAA8AAAADAAAAAAAZAA8AAAADAAAAAAAAABAAAAADAAAAAAABABAAAAADAAAAAAACABAAAAADAAAAAAADABAAAAADAAAAAAAEABAAAAADAAAAAAAFABAAAAADAAAAAAAGABAAAAADAAAAAAAHABAAAAADAAAAAAAIABAAAAADAAAAAAAJABAAAAADAAAAAAAKABAAAAADAAAAAAALABAAAAADAAAAAAAMABAAAAADAAAAAAANABAAAAADAAAAAAAOABAAAAADAAAAAAAPABAAAAADAAAAAAATABAAAAADAAAAAAAUABAAAAADAAAAAAAVABAAAAADAAAAAAAWABAAAAADAAAAAAAXABAAAAADAAAAAAAYABAAAAADAAAAAAAZABAAAAADAAAAAAAaABAAAAADAAAAAAAbABAAAAADAAAAAAAcABAAAAADAAAAAAADAAUAAAAEAAMAAAADAAYAAAAEAAAAAAADAAcAAAAEAAEAAAAEAAUAAAAEAAMAABAEAAYAAAAFAAAAAAAEAAcAAAAFAAEAAAAFAAYAAAAGAAAAAAAFAAcAAAAGAAEAAAAGAAYAAAAHAAAAAAAGAAcAAAAHAAEAAAAQAA8AAAADAAAAAAAQABAAAAADAAAAAAARAA8AAAADAAAAAAARABAAAAADAAAAAAASAA8AAAADAAAAAAASABAAAAADAAAAAAAdABAAAAADAAAAAAAeABAAAAADAAAAAAAaAA8AAAADAAAAAAAbAA8AAAADAAAAAAAcAA8AAAADAAAAAAAdAA8AAAADAAAAAAAeAA8AAAADAAAAAAD//w8AAAADAAAAAAD+/w8AAAADAAAAAAD+/xAAAAADAAAAAAD//xAAAAADAAAAAAA=")
 tile_set = SubResource("TileSet_ncsg4")
 
-[node name="InvisibleWallLeft" type="Area2D" parent="."]
+[node name="InvisibleWallLeft" type="StaticBody2D" parent="."]
 collision_layer = 3
 collision_mask = 3
 
@@ -292,7 +297,7 @@ visibility_layer = 3
 position = Vector2(1274, -5.25)
 shape = SubResource("RectangleShape2D_nqcc7")
 
-[node name="InvisibleWallRight" type="Area2D" parent="."]
+[node name="InvisibleWallRight" type="StaticBody2D" parent="."]
 collision_layer = 3
 collision_mask = 3
 
@@ -302,5 +307,16 @@ visibility_layer = 3
 position = Vector2(1160, 297)
 shape = SubResource("RectangleShape2D_q60fs")
 
+[node name="EnterCredits" type="Area2D" parent="."]
+light_mask = 3
+visibility_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnterCredits"]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(579, 404)
+shape = SubResource("RectangleShape2D_omrgh")
+
 [connection signal="body_entered" from="Bottom" to="." method="_on_bottom_body_entered"]
 [connection signal="body_entered" from="PortalWallRight" to="." method="_on_portal_wall_right_entered"]
+[connection signal="body_entered" from="EnterCredits" to="." method="_on_enter_credits_body_entered"]

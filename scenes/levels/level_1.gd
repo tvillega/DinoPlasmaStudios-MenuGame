@@ -14,3 +14,9 @@ func _on_unlock_flying_body_entered(body: Node2D) -> void:
 	PlayerStats.can_jump = true
 	LobbyStats.beaten_lvl_1 = true
 	get_tree().change_scene_to_file("res://scenes/lobby.tscn")
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	Debug.log("Returning to Lobby")
+	get_tree().change_scene_to_file("res://scenes/lobby.tscn")
+	
