@@ -200,14 +200,14 @@ position = Vector2(288, 90)
 [node name="UnlockFLying" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UnlockFLying"]
-position = Vector2(1074, 490)
+position = Vector2(1065, 523)
 shape = SubResource("CircleShape2D_4tcl0")
 
 [node name="Button" type="Button" parent="UnlockFLying"]
-offset_left = 1024.0
-offset_top = 449.0
-offset_right = 1123.0
-offset_bottom = 531.0
+offset_left = 1015.0
+offset_top = 482.0
+offset_right = 1114.0
+offset_bottom = 564.0
 text = "Unlock
 Jumping"
 

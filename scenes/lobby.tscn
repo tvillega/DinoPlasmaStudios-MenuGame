@@ -314,7 +314,7 @@ visibility_layer = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnterCredits"]
 light_mask = 3
 visibility_layer = 3
-position = Vector2(579, 404)
+position = Vector2(578, 407)
 shape = SubResource("RectangleShape2D_omrgh")
 
 [connection signal="body_entered" from="Bottom" to="." method="_on_bottom_body_entered"]
