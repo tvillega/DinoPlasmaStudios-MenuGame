@@ -25,6 +25,10 @@ func _ready():
 	playback.travel("trudfly")
 
 func _physics_process(delta):
+	
+	if LobbyStats.beaten_lvl_2:
+		queue_free()
+	
 	if is_damaged:  # 🔸 EVITA QUE SE MUEVA O DIS PARE SI ESTÁ DAÑADO
 		return
 	
@@ -59,5 +63,6 @@ func shoot_egg():
 func take_damage():
 	is_damaged = true
 	playback.travel("damage")
+	LobbyStats.beaten_lvl_2 = true
 	await get_tree().create_timer(0.5).timeout
 	queue_free()

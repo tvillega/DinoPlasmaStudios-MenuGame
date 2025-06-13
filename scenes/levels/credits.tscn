@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://c1oghuau8yp8q"]
+[gd_scene load_steps=30 format=4 uid="uid://c1oghuau8yp8q"]
 
 [ext_resource type="Script" uid="uid://cx2xxicljkrp0" path="res://scenes/levels/credits.gd" id="1_3hkv2"]
 [ext_resource type="Texture2D" uid="uid://jbw1rsorup7t" path="res://sprites/Final/Tiles.png" id="1_kljwr"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://b4iybe1ulp14u" path="res://sprites/Pixel-16px Graveyard/stone3.png" id="9_ccjqj"]
 [ext_resource type="PackedScene" uid="uid://bob1voxqqk25o" path="res://scenes/miniboss.tscn" id="11_66pw8"]
 [ext_resource type="PackedScene" uid="uid://d12fjqw18w6ab" path="res://scenes/interruptor.tscn" id="13_ccjqj"]
+[ext_resource type="Texture2D" uid="uid://cklkk2pas1fj" path="res://sprites/Final/Salt.png" id="15_twb4m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ccjqj"]
 texture = ExtResource("1_kljwr")
@@ -8664,6 +8665,9 @@ sources/9 = SubResource("TileSetAtlasSource_wvvnq")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3hkv2"]
 size = Vector2(20, 726)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_is8mj"]
+size = Vector2(67, 125)
+
 [node name="creditos" type="Node2D"]
 script = ExtResource("1_3hkv2")
 
@@ -8723,3 +8727,18 @@ shape = SubResource("RectangleShape2D_3hkv2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InvWallRight"]
 position = Vector2(1156, 362)
 shape = SubResource("RectangleShape2D_3hkv2")
+
+[node name="LobbyPortal" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="LobbyPortal"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LobbyPortal"]
+position = Vector2(533.5, 224.5)
+shape = SubResource("RectangleShape2D_is8mj")
+
+[node name="Salt" type="Sprite2D" parent="LobbyPortal"]
+position = Vector2(534, 220)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("15_twb4m")
+
+[connection signal="body_entered" from="LobbyPortal" to="." method="_on_lobby_portal_body_entered"]

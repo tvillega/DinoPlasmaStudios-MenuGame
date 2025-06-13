@@ -2,7 +2,7 @@ class_name Goose
 extends CharacterBody2D
 
 @export var speed = 300
-@export var og_jump = 300 # Beacuse jump could be 0
+@export var og_jump = 400 # Beacuse jump could be 0
 @export var jump = 400
 @export var gravity = 600
 @export var aceleration = 1500
@@ -16,15 +16,16 @@ extends CharacterBody2D
 
 @onready var dead = false
 
-func _ready() -> void:
-	if not PlayerStats.can_fly:
-		glasses.visible = false
-
 func _physics_process(delta: float) -> void:
 	
-	if dead:
+	if dead and not PlayerStats.inmortal:
 		label.text = "OH NO"
 		return
+		
+	if PlayerStats.can_fly:
+		glasses.visible = true
+	else:
+		glasses.visible = false
 	
 	# Gatekeep jumping by setting it to zero
 	if not PlayerStats.can_jump:
@@ -32,12 +33,14 @@ func _physics_process(delta: float) -> void:
 	else:
 		jump = og_jump
 		
-	if not is_on_floor():
+		
+	if not is_on_floor() and Input.is_action_just_pressed("Jump") and PlayerStats.can_fly:
+		velocity.y = -jump
+		
+	elif not is_on_floor():
 		velocity.y += gravity*delta
-	
+
 	elif is_on_floor() and Input.is_action_just_pressed("Jump"):
-		if not PlayerStats.can_jump:
-			Debug.log("I can't jump. There must be a way to unlock it.")
 		velocity.y = -jump
 
 	var move_input = Input.get_axis("Mov_left","Mov_right")
@@ -70,9 +73,13 @@ func _physics_process(delta: float) -> void:
 			playback.travel("fall")  # Cayendo (o usa "fall" si tienes animación)
 	move_and_slide()
 func receive_hit():
+	
+	if PlayerStats.inmortal:
+		return
+		
 	dead = true
 	Debug.log("You've been slayed, returning to Lobby.")
 	await get_tree().create_timer(2).timeout
 	get_tree().change_scene_to_file("res://scenes/lobby.tscn")
-	queue_free()  # Esto elimina al ganso
+	#queue_free()  # Esto elimina al ganso
 	

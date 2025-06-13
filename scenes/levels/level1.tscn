@@ -196,6 +196,11 @@ script = ExtResource("1_dd0lh")
 
 [node name="Goose" parent="Players" instance=ExtResource("2_4tcl0")]
 position = Vector2(288, 90)
+speed = 300
+og_jump = 400
+jump = 400
+gravity = 600
+aceleration = 1500
 
 [node name="UnlockFLying" type="Area2D" parent="."]
 

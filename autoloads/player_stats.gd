@@ -4,3 +4,4 @@ extends Node
 var can_move_left = false
 var can_jump = false
 var can_fly  = false
+var inmortal = false
