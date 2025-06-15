@@ -212,11 +212,6 @@ visibility_layer = 3
 position = Vector2(232, -71)
 collision_layer = 3
 collision_mask = 3
-speed = 300
-og_jump = 400
-jump = 400
-gravity = 600
-aceleration = 1500
 
 [node name="FakeUI" type="Node2D" parent="."]
 
