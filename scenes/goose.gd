@@ -36,12 +36,16 @@ func _physics_process(delta: float) -> void:
 		jump = og_jump
 		
 	if not is_on_floor() and Input.is_action_just_pressed("Jump") and PlayerStats.can_fly:
+		if not PlayerStats.can_jump:
+			label.text = "Can't jump"
 		velocity.y = -jump
 		
 	elif not is_on_floor():
 		velocity.y += gravity*delta
 
 	elif is_on_floor() and Input.is_action_just_pressed("Jump"):
+		if not PlayerStats.can_jump:
+			label.text = "Can't jump"
 		velocity.y = -jump
 
 	var move_input = Input.get_axis("Mov_left","Mov_right")
@@ -61,10 +65,13 @@ func _physics_process(delta: float) -> void:
 			if abs(velocity.x) > og_jump*1.5:
 				label.text = "INCOMING!!"
 			else:
-				label.text = ""
+				if not PlayerStats.can_jump:
+					label.text = "Let's walk"
+				else:
+					label.text = ""
 			playback.travel("walk")  # Caminando
 		elif velocity.y == 0:
-			label.text = ""
+			#label.text = ""
 			playback.travel("idle")  # Quieto
 	else:
 		if velocity.y < 0:
@@ -73,7 +80,10 @@ func _physics_process(delta: float) -> void:
 			label.text = ""
 		else:
 			if velocity.y > jump+50:
-				label.text = "I CAN'T FLY"
+				if PlayerStats.can_fly:
+					label.text = "MVP can fly"
+				else:
+					label.text = "I CAN'T FLY"
 			playback.travel("fall")  # Cayendo (o usa "fall" si tienes animación)
 	move_and_slide()
 func receive_hit():
