@@ -12,7 +12,9 @@ extends CharacterBody2D
 
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var playback = animation_tree["parameters/playback"]
-@onready var glasses = $"Meme-glasses"
+
+@onready var pivot: Node2D = $Pivot
+@onready var glasses: Sprite2D = $"Pivot/Meme-glasses"
 
 @onready var dead = false
 
@@ -33,7 +35,6 @@ func _physics_process(delta: float) -> void:
 	else:
 		jump = og_jump
 		
-		
 	if not is_on_floor() and Input.is_action_just_pressed("Jump") and PlayerStats.can_fly:
 		velocity.y = -jump
 		
@@ -49,6 +50,9 @@ func _physics_process(delta: float) -> void:
 		sprite.flip_h = true
 	elif move_input > 0:
 		sprite.flip_h = false
+		
+	if move_input != 0:
+		pivot.scale.x = sign(move_input)
 	
 	velocity.x = move_toward(velocity.x, speed*move_input, aceleration*delta)
 	

@@ -8703,6 +8703,11 @@ tile_set = SubResource("TileSet_tlra1")
 
 [node name="Goose" parent="." instance=ExtResource("4_m0gy5")]
 position = Vector2(274, 158)
+speed = 300
+og_jump = 400
+jump = 400
+gravity = 600
+aceleration = 1500
 
 [node name="Interruptor" parent="." groups=["interruptores"] instance=ExtResource("13_ccjqj")]
 position = Vector2(950, 337)

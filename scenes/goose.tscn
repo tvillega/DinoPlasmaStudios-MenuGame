@@ -368,11 +368,6 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_4r5pv")
 anim_player = NodePath("../AnimationPlayer")
 
-[node name="Meme-glasses" type="Sprite2D" parent="."]
-position = Vector2(17, -57)
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("6_ruu4t")
-
 [node name="Hurtbox" type="Area2D" parent="." groups=["damage"]]
 script = ExtResource("6_oe8yf")
 metadata/_custom_type_script = "uid://cimjfucgu5mql"
@@ -380,3 +375,10 @@ metadata/_custom_type_script = "uid://cimjfucgu5mql"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(6, -39)
 shape = SubResource("CapsuleShape2D_ruu4t")
+
+[node name="Pivot" type="Node2D" parent="."]
+
+[node name="Meme-glasses" type="Sprite2D" parent="Pivot"]
+position = Vector2(17, -57)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("6_ruu4t")
