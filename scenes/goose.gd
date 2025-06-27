@@ -18,6 +18,11 @@ extends CharacterBody2D
 
 @onready var dead = false
 
+@onready var hoonk = preload("res://SFX/Hoonk.wav")
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+
+
+
 func _physics_process(delta: float) -> void:
 	
 	if dead and not PlayerStats.inmortal:
@@ -46,6 +51,7 @@ func _physics_process(delta: float) -> void:
 	elif is_on_floor() and Input.is_action_just_pressed("Jump"):
 		if not PlayerStats.can_jump:
 			label.text = "Can't jump"
+			audio_stream_player_2d.play()
 		velocity.y = -jump
 
 	var move_input = Input.get_axis("Mov_left","Mov_right")
@@ -62,8 +68,9 @@ func _physics_process(delta: float) -> void:
 	
 	if is_on_floor():
 		if abs(velocity.x) > 10 and velocity.y == 0:
-			if abs(velocity.x) > og_jump*1.5:
+			if abs(velocity.x) > og_jump*1.2:
 				label.text = "INCOMING!!"
+				audio_stream_player_2d.play()
 			else:
 				if not PlayerStats.can_jump:
 					label.text = "Let's walk"

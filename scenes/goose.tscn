@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://h5p34vcy7ryy"]
+[gd_scene load_steps=37 format=3 uid="uid://h5p34vcy7ryy"]
 
 [ext_resource type="Texture2D" uid="uid://c7w1umuoe5cla" path="res://sprites/Goose/Idle.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://cmsostlsb6ca" path="res://scenes/goose.gd" id="1_qlg0r"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ddhjkcq5klv18" path="res://sprites/Goose/Flap.png" id="5_fjrip"]
 [ext_resource type="Script" uid="uid://cimjfucgu5mql" path="res://scenes/hurtbox.gd" id="6_oe8yf"]
 [ext_resource type="Texture2D" uid="uid://cl7hc1gtx4nx1" path="res://sprites/meme-glasses.png" id="6_ruu4t"]
+[ext_resource type="AudioStream" uid="uid://q2a5ieownu8h" path="res://SFX/Hoonk.wav" id="8_j6ked"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vyb7"]
 radius = 8.0
@@ -382,3 +383,6 @@ shape = SubResource("CapsuleShape2D_ruu4t")
 position = Vector2(17, -57)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("6_ruu4t")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_j6ked")
