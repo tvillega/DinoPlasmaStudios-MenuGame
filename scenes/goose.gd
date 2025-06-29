@@ -20,8 +20,8 @@ extends CharacterBody2D
 
 @onready var hoonk = preload("res://SFX/Hoonk.wav")
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
-
-
+@onready var fly_sound: AudioStreamPlayer2D = $FlySound
+@onready var jump_sound: AudioStreamPlayer2D = $JumpSound
 
 func _physics_process(delta: float) -> void:
 	
@@ -44,6 +44,8 @@ func _physics_process(delta: float) -> void:
 		if not PlayerStats.can_jump:
 			label.text = "Can't jump"
 		velocity.y = -jump
+		fly_sound.play()
+		
 		
 	elif not is_on_floor():
 		velocity.y += gravity*delta
@@ -52,7 +54,10 @@ func _physics_process(delta: float) -> void:
 		if not PlayerStats.can_jump:
 			label.text = "Can't jump"
 			audio_stream_player_2d.play()
-		velocity.y = -jump
+		else:
+			velocity.y = -jump
+			jump_sound.play()
+			
 
 	var move_input = Input.get_axis("Mov_left","Mov_right")
 

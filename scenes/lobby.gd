@@ -5,10 +5,14 @@ extends Node2D
 
 @onready var bottom: Area2D = $Bottom
 
-@onready var settings: CollisionShape2D = $FakeUI/Settings/CollisionShape2D
+@onready var start_floor: CollisionShape2D = $FakeUI/Start/CollisionShape2D
+@onready var start_button: Button = $FakeUI/Start/Button
 
+@onready var settings: CollisionShape2D = $FakeUI/Settings/CollisionShape2D
+@onready var settings_button: Button = $FakeUI/Settings/Button
 
 @onready var credits_portal: CollisionShape2D = $EnterCredits/CollisionShape2D
+@onready var creddits_button: Button = $FakeUI/Credits/Button
 
 # Right side of the lobby 
 @onready var invisible_wall_right: CollisionShape2D = $InvisibleWallRight/CollisionShape2D
@@ -30,7 +34,20 @@ func _ready() -> void:
 		
 	else:
 		credits_portal.disabled = true
+		settings_button.disabled = true
 		
+	if LobbyStats.beaten_lvl_2:
+		pass
+		
+	else:
+		creddits_button.disabled = true
+		
+	if LobbyStats.beaten_lvl_3:
+		pass
+		
+	else:
+		start_floor.disabled = true
+		start_button.disabled = true
 
 func _on_bottom_body_entered(body: Node2D) -> void:
 	

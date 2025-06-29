@@ -65,5 +65,5 @@ func take_damage():
 	playback.travel("damage")
 	LobbyStats.beaten_lvl_2 = true
 	PlayerStats.can_fly = true
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(2).timeout
 	queue_free()
