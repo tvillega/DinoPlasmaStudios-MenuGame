@@ -105,6 +105,7 @@ func receive_hit():
 		
 	dead = true
 	Debug.log("You've been slayed, returning to Lobby.")
+	audio_stream_player_2d.play()
 	await get_tree().create_timer(2).timeout
 	get_tree().change_scene_to_file("res://scenes/lobby.tscn")
 	#queue_free()  # Esto elimina al ganso
