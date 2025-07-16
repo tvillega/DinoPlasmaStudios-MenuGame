@@ -2,11 +2,14 @@ class_name Level1
 extends Node2D
 @onready var unlock_flying: Area2D = $UnlockFlying
 @onready var goose: CharacterBody2D = $Players/Goose
+@onready var button: Button = $UnlockFLying/Button
 
 func _ready() -> void:
 
 	if LobbyStats.beaten_lvl_1:
 		Debug.log("Already beaten")
+		button.disabled = true
+		
 
 func _on_unlock_flying_body_entered(body: Node2D) -> void:
 

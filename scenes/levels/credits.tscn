@@ -8879,7 +8879,7 @@ tile_map_data = PackedByteArray("AAAIAcIBAAACAAoAAAAIAcMBAAACAAsAAAAJAcEBAAADAAk
 tile_set = SubResource("TileSet_tlra1")
 
 [node name="Goose" parent="." instance=ExtResource("4_m0gy5")]
-position = Vector2(274, 158)
+position = Vector2(214, 115)
 
 [node name="Interruptor" parent="." groups=["interruptores"] instance=ExtResource("13_ccjqj")]
 position = Vector2(971, 357)

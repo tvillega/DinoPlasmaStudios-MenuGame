@@ -7,6 +7,8 @@ extends CharacterBody2D
 @export var gravity = 600
 @export var aceleration = 1500
 
+@onready var hurtbox: Hurtbox = $Hurtbox
+
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var label: Label = $Label
 
@@ -24,29 +26,28 @@ extends CharacterBody2D
 @onready var jump_sound: AudioStreamPlayer2D = $JumpSound
 
 func _physics_process(delta: float) -> void:
-	
+
 	if dead and not PlayerStats.inmortal:
 		label.text = "OH NO"
 		return
-		
+
 	if PlayerStats.can_fly:
 		glasses.visible = true
 	else:
 		glasses.visible = false
-	
+
 	# Gatekeep jumping by setting it to zero
 	if not PlayerStats.can_jump:
 		jump = 0
 	else:
 		jump = og_jump
-		
+
 	if not is_on_floor() and Input.is_action_just_pressed("Jump") and PlayerStats.can_fly:
 		if not PlayerStats.can_jump:
 			label.text = "Can't jump"
 		velocity.y = -jump
 		fly_sound.play()
-		
-		
+
 	elif not is_on_floor():
 		velocity.y += gravity*delta
 
@@ -58,13 +59,14 @@ func _physics_process(delta: float) -> void:
 			velocity.y = -jump
 			jump_sound.play()
 			
-
 	var move_input = Input.get_axis("Mov_left","Mov_right")
 
 	if move_input < 0:
 		sprite.flip_h = true
+		hurtbox.scale.x = -1
 	elif move_input > 0:
 		sprite.flip_h = false
+		hurtbox.scale.x = 1
 		
 	if move_input != 0:
 		pivot.scale.x = sign(move_input)
@@ -98,6 +100,7 @@ func _physics_process(delta: float) -> void:
 					label.text = "I CAN'T FLY"
 			playback.travel("fall")  # Cayendo (o usa "fall" si tienes animación)
 	move_and_slide()
+	
 func receive_hit():
 	
 	if PlayerStats.inmortal:

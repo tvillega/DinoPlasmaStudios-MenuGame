@@ -8,9 +8,10 @@ var interruptores_activados = 0
 @onready var interruptor_2: Area2D = $Interruptor2
 @onready var interruptor_3: Area2D = $Interruptor3
 
+@onready var light_novel_intro: bool = true
 
 func _physics_process(delta: float) -> void:
-	
+
 	if not LobbyStats.beaten_lvl_2:
 		lobby_portal.visible = false
 
@@ -30,8 +31,6 @@ func _on_interruptor_activado():
 	if interruptores_activados >= 3:
 		if miniboss:
 			miniboss.take_damage() # Aquí puedes cambiar por animación o efectos si prefiere
-	
-
 
 func _on_lobby_portal_body_entered(body: Node2D) -> void:
 	if LobbyStats.beaten_lvl_2:
