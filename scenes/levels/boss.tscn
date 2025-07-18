@@ -1,5 +1,6 @@
-[gd_scene load_steps=13 format=4 uid="uid://ci2vw0qp2tggi"]
+[gd_scene load_steps=14 format=4 uid="uid://ci2vw0qp2tggi"]
 
+[ext_resource type="Script" uid="uid://c8qy2v4cn0h7q" path="res://scenes/levels/boss.gd" id="1_ebref"]
 [ext_resource type="PackedScene" uid="uid://c5ljb0n1w6xyw" path="res://jefefinal.tscn" id="1_hmtcp"]
 [ext_resource type="Texture2D" uid="uid://jbw1rsorup7t" path="res://sprites/Final/Tiles.png" id="2_gxo7s"]
 [ext_resource type="Texture2D" uid="uid://0no58ipqo1vs" path="res://sprites/Final/Background_1.png" id="2_k2q8d"]
@@ -2034,6 +2035,7 @@ size = Vector2(31.5, 631.75)
 size = Vector2(290.665, 55)
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_ebref")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(574, 443)

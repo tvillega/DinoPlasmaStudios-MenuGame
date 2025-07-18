@@ -43,7 +43,7 @@ func _ready() -> void:
 		settings_button.disabled = true
 		
 	if LobbyStats.beaten_lvl_2:
-		overlay.show_dialogue("Goose", "Maye I should give some use to this wings", imag_goose)
+		overlay.show_dialogue("Goose", "Maybe I should give some use to this wings", imag_goose)
 		
 	else:
 		creddits_button.disabled = true
