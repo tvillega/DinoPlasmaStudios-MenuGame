@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://cftp0460caaal"]
+[gd_scene load_steps=15 format=4 uid="uid://cftp0460caaal"]
 
 [ext_resource type="Script" uid="uid://d1jv6ltvba3vh" path="res://scenes/lobby.gd" id="1_pc087"]
 [ext_resource type="PackedScene" uid="uid://h5p34vcy7ryy" path="res://scenes/goose.tscn" id="2_apkv3"]
@@ -205,6 +205,9 @@ size = Vector2(286, 26)
 a = Vector2(1123, -39)
 b = Vector2(39, -39)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ncsg4"]
+size = Vector2(277, 20)
+
 [node name="Lobby" type="Node2D"]
 script = ExtResource("1_pc087")
 
@@ -326,7 +329,14 @@ shape = SubResource("RectangleShape2D_omrgh")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PortalRoof"]
 shape = SubResource("SegmentShape2D_q60fs")
 
+[node name="EnterRealCredits" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnterRealCredits"]
+position = Vector2(575.5, 208)
+shape = SubResource("RectangleShape2D_ncsg4")
+
 [connection signal="body_entered" from="Bottom" to="." method="_on_bottom_body_entered"]
 [connection signal="body_entered" from="PortalWallRight" to="." method="_on_portal_wall_right_entered"]
 [connection signal="body_entered" from="EnterCredits" to="." method="_on_enter_credits_body_entered"]
 [connection signal="area_entered" from="PortalRoof" to="." method="_on_portal_roof_area_entered"]
+[connection signal="area_entered" from="EnterRealCredits" to="." method="_on_enter_real_credits_area_entered"]

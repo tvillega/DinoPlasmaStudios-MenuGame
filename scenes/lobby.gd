@@ -43,13 +43,15 @@ func _ready() -> void:
 		settings_button.disabled = true
 		
 	if LobbyStats.beaten_lvl_2:
-		overlay.show_dialogue("Goose", "Maybe I should give some use to this wings", imag_goose)
+		if not LobbyStats.beaten_lvl_3:
+			overlay.show_dialogue("Goose", "Maybe I should give some use to this wings", imag_goose)
 		
 	else:
 		creddits_button.disabled = true
 		
 	if LobbyStats.beaten_lvl_3:
-		pass
+		start_floor.disabled = false
+		start_button.disabled = false
 		
 	else:
 		start_floor.disabled = true
@@ -83,3 +85,12 @@ func _on_enter_credits_body_entered(body: Node2D) -> void:
 
 func _on_portal_roof_area_entered(area: Area2D) -> void:
 	get_tree().change_scene_to_file("res://scenes/levels/boss.tscn")
+
+func _on_enter_real_credits_area_entered(area: Area2D) -> void:
+	var overlay = overlay_scene.instantiate()
+	add_child(overlay)
+	overlay.show_dialogue("Goose", "See you next time folks!", imag_goose)
+	get_tree().paused = true
+	await get_tree().create_timer(5).timeout
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://scenes/levels/level1.tscn")

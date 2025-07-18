@@ -2085,3 +2085,9 @@ position = Vector2(519.215, 485.962)
 rotation = -0.494526
 scale = Vector2(0.856283, 0.331858)
 texture = ExtResource("6_pychn")
+
+[node name="ExitTimer" type="Timer" parent="."]
+wait_time = 35.0
+autostart = true
+
+[connection signal="timeout" from="ExitTimer" to="." method="_on_exit_timer_timeout"]

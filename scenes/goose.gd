@@ -32,13 +32,18 @@ func _ready() -> void:
 		full_body_hurtbox.disabled = false
 	else:
 		full_body_hurtbox.disabled = true
-		
 
 func _physics_process(delta: float) -> void:
 
 	if dead and not PlayerStats.inmortal:
 		label.text = "OH NO"
 		return
+		
+	if Input.is_action_just_pressed("ToggleInmortal"):
+		PlayerStats.inmortal = !PlayerStats.inmortal
+		
+	if PlayerStats.inmortal:
+		label.text = "INMORTAL"
 
 	if PlayerStats.can_fly:
 		glasses.visible = true
