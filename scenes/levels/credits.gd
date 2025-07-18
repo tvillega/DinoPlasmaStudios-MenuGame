@@ -10,12 +10,19 @@ var interruptores_activados = 0
 
 @onready var light_novel_intro: bool = true
 
+@onready var overlay_scene = preload("res://ui/OverlayDialog.tscn")
+@onready var imag_goose = preload("res://sprites/Domestic_goose_face.png") 
+
 func _physics_process(delta: float) -> void:
 
 	if not LobbyStats.beaten_lvl_2:
 		lobby_portal.visible = false
 
 func _ready():
+	
+	var overlay = overlay_scene.instantiate()
+	add_child(overlay)
+	
 	for interruptor in get_tree().get_nodes_in_group("interruptores"):
 		interruptor.connect("interruptor_activado", Callable(self, "_on_interruptor_activado"))
 		
@@ -23,6 +30,10 @@ func _ready():
 		interruptor.visible = false
 		interruptor_2.visible = false
 		interruptor_3.visible = false
+		overlay.show_dialogue("Goose", "I already won!!! :D", imag_goose)
+	else:
+		overlay.show_dialogue("Goose", "I should attack the 3 statues", imag_goose)
+	overlay.connect("dialogue_finished", Callable(self, "_on_dialogue_finished"))
 
 func _on_interruptor_activado():
 	interruptores_activados += 1
