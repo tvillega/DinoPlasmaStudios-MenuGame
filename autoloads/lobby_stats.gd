@@ -11,3 +11,5 @@ var beaten_lvl_3   = false
 
 var unlocked_lvl_4 = false
 var beaten_lvl_4   = false
+
+var lvl1_visits = 0
