@@ -209,7 +209,7 @@ light_mask = 3
 visibility_layer = 3
 
 [node name="Goose" parent="Players" instance=ExtResource("2_apkv3")]
-position = Vector2(232, -71)
+position = Vector2(229, 81)
 collision_layer = 3
 collision_mask = 3
 

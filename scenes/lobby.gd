@@ -22,7 +22,13 @@ extends Node2D
 @onready var invisible_wall_left: CollisionShape2D = $InvisibleWallLeft/CollisionShape2D
 @onready var portal_wall_left: Area2D = $PortalWallLeft
 
+@onready var overlay_scene = preload("res://ui/OverlayDialog.tscn")
+@onready var imag_goose = preload("res://sprites/Domestic_goose_face.png") 
+
 func _ready() -> void:
+	
+	var overlay = overlay_scene.instantiate()
+	add_child(overlay)
 
 	##
 	## Setup right side of the lobby
@@ -37,7 +43,7 @@ func _ready() -> void:
 		settings_button.disabled = true
 		
 	if LobbyStats.beaten_lvl_2:
-		pass
+		overlay.show_dialogue("Goose", "Maye I should give some use to this wings", imag_goose)
 		
 	else:
 		creddits_button.disabled = true
@@ -48,6 +54,8 @@ func _ready() -> void:
 	else:
 		start_floor.disabled = true
 		start_button.disabled = true
+		
+	overlay.connect("dialogue_finished", Callable(self, "_on_dialogue_finished"))
 
 func _on_bottom_body_entered(body: Node2D) -> void:
 	
@@ -66,5 +74,11 @@ func _on_portal_wall_right_entered(body: Node2D) -> void:
 
 
 func _on_enter_credits_body_entered(body: Node2D) -> void:
-	Debug.log("Level: 2 Flying")
-	get_tree().change_scene_to_file("res://scenes/levels/credits.tscn")
+	if LobbyStats.beaten_lvl_2:
+		var overlay = overlay_scene.instantiate()
+		add_child(overlay)
+		overlay.show_dialogue("Goose", "Maye I should give some use to this wings", imag_goose)
+		overlay.connect("dialogue_finished", Callable(self, "_on_dialogue_finished"))
+	else:
+		Debug.log("Level: 2 Flying")
+		get_tree().change_scene_to_file("res://scenes/levels/credits.tscn")
