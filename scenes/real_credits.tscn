@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://mkid6875htjx"]
+[gd_scene load_steps=42 format=3 uid="uid://mkid6875htjx"]
 
 [ext_resource type="Texture2D" uid="uid://c7w1umuoe5cla" path="res://sprites/Goose/Idle.png" id="1_anev2"]
 [ext_resource type="Texture2D" uid="uid://ddhjkcq5klv18" path="res://sprites/Goose/Flap.png" id="2_4hbh6"]
@@ -10,6 +10,12 @@
 [ext_resource type="Texture2D" uid="uid://diqvyyesevaqn" path="res://sprites/Pixel-16px Graveyard/graveStone.png" id="8_o640e"]
 [ext_resource type="Texture2D" uid="uid://lf1iq26m84ca" path="res://sprites/Pixel-16px Graveyard/gravestoneBot.png" id="9_w1koa"]
 [ext_resource type="Texture2D" uid="uid://dypxmhpwnxqpx" path="res://sprites/Wizardgooseassets/EggBlast (64x64).png" id="10_wxbyt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_idq5f"]
+bg_color = Color(0.58089, 0.626752, 0.428255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dj6vd"]
+bg_color = Color(0.371508, 0.679683, 0.456031, 1)
 
 [sub_resource type="Animation" id="Animation_qhqgy"]
 length = 0.001
@@ -377,6 +383,54 @@ graph_offset = Vector2(85.35, -15.4499)
 
 [node name="RealCredits" type="Node2D"]
 
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+top_level = true
+offset_left = 266.0
+offset_top = 53.0
+offset_right = 943.0
+offset_bottom = 584.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_idq5f")
+theme_override_styles/background = SubResource("StyleBoxFlat_dj6vd")
+text = "Sprites:
+8 Bit Factory Tileset Pack - https://seaegull.itch.io/industrial-platformer-tileset
+
+FreeCatCharacterAnimations - https://oboropixel.itch.io/character-animations (Final Boss)
+
+Goose  https://duckhive.itch.io/goose (Main character sprite)
+
+Lightning -  https://asgaard42.itch.io/pixel-art-directional-lightning-effect (Attack of Final Boss)
+
+Graveyard - https://segart.itch.io/2d-16px-graveyard-tileset (Scenario for first Boss)
+
+Wizard Goose - https://axolotl-jim.itch.io/wizard-goose-sp
+
+Slime - https://david-ricardo.itch.io/slime-assets-32x32
+
+Realistic Goose - https://commons.wikimedia.org/wiki/File:Domestic_goose.png
+
+Moon Background - https://anokolisa.itch.io/moon-graveyard (Scenario for the last boss)
+
+Starstring fields - https://trixelized.itch.io/starstring-fields
+
+Explosions - https://free-game-assets.itch.io/11-free-pixel-art-explosion-sprites
+
+Sounds:
+Hoonk - https://www.youtube.com/watch?v=A8nqfY3rUKw&ab_channel=Oxijinn
+
+SFX - https://hzsmith.itch.io/free-sfx-pack-vol-3
+
+Devs:
+Benjamín Bautista; Manuel Ortiz; Tomás Villegas"
+
+[node name="ColorRect" type="ColorRect" parent="RichTextLabel"]
+modulate = Color(0.356863, 0.227451, 0.203922, 1)
+show_behind_parent = true
+layout_mode = 0
+offset_left = -258.0
+offset_top = -41.0
+offset_right = 662.0
+offset_bottom = 605.0
+
 [node name="Goose1" type="Node" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Goose1"]
@@ -434,7 +488,7 @@ texture = ExtResource("2_uy2vr")
 [node name="Goose3" type="Node" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Goose3"]
-position = Vector2(316, 389)
+position = Vector2(249, 406)
 rotation = -0.390693
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("1_anev2")
@@ -454,14 +508,14 @@ position = Vector2(316, 389)
 rotation = -0.390693
 
 [node name="Meme-glasses" type="Sprite2D" parent="Goose3/Pivot"]
-position = Vector2(17, -57)
+position = Vector2(-50.5796, -66.2548)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("2_uy2vr")
 
 [node name="Goose4" type="Node" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Goose4"]
-position = Vector2(757.28, 490.28)
+position = Vector2(987, 485)
 rotation = 0.000794709
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("1_anev2")
@@ -481,7 +535,7 @@ position = Vector2(757.28, 490.28)
 rotation = 0.000794709
 
 [node name="Meme-glasses" type="Sprite2D" parent="Goose4/Pivot"]
-position = Vector2(17, -57)
+position = Vector2(247.669, -64.4768)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("2_uy2vr")
 
@@ -532,7 +586,7 @@ scale = Vector2(6.9375, 7.1875)
 texture = ExtResource("8_o640e")
 
 [node name="GraveStone2" type="Sprite2D" parent="."]
-position = Vector2(810, 490)
+position = Vector2(813, 489)
 scale = Vector2(6.9375, 7.1875)
 texture = ExtResource("8_o640e")
 
