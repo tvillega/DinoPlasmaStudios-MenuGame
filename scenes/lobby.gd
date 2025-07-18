@@ -70,15 +70,16 @@ func _on_bottom_body_entered(body: Node2D) -> void:
 func _on_portal_wall_right_entered(body: Node2D) -> void:
 	Debug.log("Revisiting Level 1")
 	get_tree().change_scene_to_file("res://scenes/levels/level1.tscn")
-	
-
 
 func _on_enter_credits_body_entered(body: Node2D) -> void:
 	if LobbyStats.beaten_lvl_2:
 		var overlay = overlay_scene.instantiate()
 		add_child(overlay)
-		overlay.show_dialogue("Goose", "Maye I should give some use to this wings", imag_goose)
+		overlay.show_dialogue("Goose", "Maybe I should give some use to this wings", imag_goose)
 		overlay.connect("dialogue_finished", Callable(self, "_on_dialogue_finished"))
 	else:
 		Debug.log("Level: 2 Flying")
 		get_tree().change_scene_to_file("res://scenes/levels/credits.tscn")
+
+func _on_portal_roof_area_entered(area: Area2D) -> void:
+	get_tree().change_scene_to_file("res://scenes/levels/boss.tscn")

@@ -25,6 +25,15 @@ extends CharacterBody2D
 @onready var fly_sound: AudioStreamPlayer2D = $FlySound
 @onready var jump_sound: AudioStreamPlayer2D = $JumpSound
 
+@onready var full_body_hurtbox: CollisionShape2D = $Hurtbox2/CollisionShape2D
+
+func _ready() -> void:
+	if PlayerStats.can_fly:
+		full_body_hurtbox.disabled = false
+	else:
+		full_body_hurtbox.disabled = true
+		
+
 func _physics_process(delta: float) -> void:
 
 	if dead and not PlayerStats.inmortal:
